@@ -39,7 +39,6 @@ The CI providers used and that might need some setup :
  * CopyDllsForDebug.cmake script : A small wrapper around fixup_bundle to copy DLLs to the output directory on windows
  * LTO.cmake script : Easier link time optimization configuration (should work on all CMake 3.x versions) as it used to be painful to setup.
  * Warnings.cmake script : A wrapper around common warning settings
- * Basic unit-testing using [doctest](https://github.com/onqtam/doctest)
  * Coverage.cmake : Test coverage script to add a 'Coverage' build type to CMake
 
 ## FAQ
@@ -56,14 +55,10 @@ __A__: Absolutely not ! It is a great place for small libraries, but you probabl
 For those, you can use a package manager such as [Hunter](https://github.com/ruslo/hunter) or simply rely on find_package/library.
 
 
-__Q__: I don't understand why you made the choice of XXXXXX here ?
 
-__A__: Open a new issue !
+__Q__: Why are there so many subdirectories to all your code? Everything is so scattered!
 
-## External dependencies (using submodules)
-
-Those dependencies can be easily removed by changing the external/CMakelists.txt and cleaning main.cpp.
-
- * [libfmt](https://github.com/fmtlib/fmt) In my opinion the best formating library
- * [spdlog](https://github.com/gabime/spdlog) A logging library based on libfmt
- * [doctest](https://github.com/onqtam/doctest) A test library not as heavy as the others
+__A__: While for this small project size it might indeed be an overkill, this approach scales well to larger
+Projects with many modules/libraries. Separating sources and headers into separate directories tends to clear up the
+code better, and make it easier to deploy all headers of a library. Adding another subdirectory for the include bundles the
+headers even if they are deployed, i.e. after installation, headers will end up in "install/include/cool-lib" and "install/include/cool-header-lib" respectively.

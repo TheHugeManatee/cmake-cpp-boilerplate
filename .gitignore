@@ -2,6 +2,7 @@
 
 .vs
 .idea
+.vscode
 
 # CMake
 build*/

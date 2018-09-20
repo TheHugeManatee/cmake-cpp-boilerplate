@@ -3,9 +3,7 @@
  */
 // The previous block is needed in every file for which you want to generate documentation
 
-#include <fmt/format.h>
-
-// This should be in the headers
+#include <iostream>
 
 /**
  * @brief A function that does nothing but generate documentation
@@ -17,7 +15,11 @@ int main(int argc, char* argv[])
 {
     if (argc)
     {
-        fmt::print("hello world from {}!", argv[0]);
+        std::cout << "The first argument was " << argv[0] << "\n";
+    }
+    else 
+    {
+        std::cout << "No arguments given.\n"; 
     }
     return 0;
 }
