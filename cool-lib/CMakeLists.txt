@@ -14,14 +14,20 @@ PRIVATE
 cool-header-lib
 )
 
+# Define a macro that allows consumers of this lib to know they link against it
+target_compile_definitions(${TARGET_NAME} PUBLIC HAS_COOL_LIB)
+
 # generate the export header for this library
 include(GenerateExportHeader)
 generate_export_header(${TARGET_NAME} EXPORT_FILE_NAME "${TARGET_HEADER_SUBDIR}${TARGET_NAME}_export.h")
 
+# CMake scripts extensions
+target_set_warnings(${TARGET_NAME} ENABLE ALL AS_ERROR ALL DISABLE Annoying)
+target_enable_lto(${TARGET_NAME} optimized) #enable lto if available for non-debug configurations
+target_compile_features(${TARGET_NAME} PRIVATE cxx_std_14)
 
-target_compile_definitions(${TARGET_NAME} PUBLIC HAS_DUMMY_INTERFACE)
-
-set_target_properties (${TARGET_NAME} PROPERTIES FOLDER implementations)
+# group this lib into the 'libs' group for some IDEs
+set_target_properties (${TARGET_NAME} PROPERTIES FOLDER libs)
 
 # add headers as sources automatically - this makes them show up in some IDEs
 # but is not strictly necessary (unless you are using CMAKE_AUTOMOC)

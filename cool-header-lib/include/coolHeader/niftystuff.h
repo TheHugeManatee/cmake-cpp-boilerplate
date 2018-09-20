@@ -1,3 +1,11 @@
 #pragma once
 
-int foo(bool branch = false);
+#include <string>
+
+namespace nifty {
+
+    template <typename T>
+    std::string doANiftyThing(const T& thing) {
+        return std::to_string(thing);
+    };
+}

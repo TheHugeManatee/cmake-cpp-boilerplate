@@ -1,16 +1,17 @@
-
 #include "coolLib/bar.h"
 #include "coolHeader/niftystuff.h"
 
 #include <iostream>
 
-namespace cool_lib {
-
-int foo(bool branch)
+namespace cool_lib
 {
-    if(branch)
+
+int bar(bool branch)
+{
+    if (branch)
     {
-        std::cout << "This line will be untested, so that coverage is not 100%\n";
+        std::cout << "This line will be untested, so that coverage is not "
+                  << nifty::doANiftyThing(100) << "%\n";
     }
     else
     {
@@ -19,4 +20,4 @@ int foo(bool branch)
     return 0;
 }
 
-}
+} // namespace cool_lib

@@ -5,24 +5,12 @@
 
 #include <iostream>
 
-/**
- * @brief A function that does nothing but generate documentation
- * @return The answer to life, the universe and everything
- */
-int foo();
-
 int main(int argc, char* argv[])
 {
-    if (argc)
+    if (argc) { std::cout << "The first argument was " << argv[0] << "\n"; }
+    else
     {
-        std::cout << "The first argument was " << argv[0] << "\n";
-    }
-    else 
-    {
-        std::cout << "No arguments given.\n"; 
+        std::cout << "No arguments given.\n";
     }
     return 0;
 }
-
-// Implementation
-int foo() { return 42; }
